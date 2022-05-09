@@ -1,33 +1,33 @@
-import React from 'react'
-import { FeedbackType, feedbackTypes } from '..';
-import { CloseButton } from '../../CloseButton';
+import { FeedbackTypes, feedbackTypes } from "..";
+import { CloseButton } from "../../CloseButton";
 
-interface FeedbackTypeStepProps {
-    onFeedBackTypeChanged: (type: FeedbackType) => void;
+interface FeedbackTypeProps {
+  onFeedbackTypeChanged: (type: FeedbackTypes) => void;
 }
 
-export function FeedbackTypeStep({onFeedBackTypeChanged}: FeedbackTypeStepProps) {
+export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeProps) {
   return (
     <>
-    <header>
+      <header>
         <span className="text-xl leading-6">Deixe seu feedback</span>
         <CloseButton />
       </header>
-    <div className="flex py-8 gap-2 w-full">
+
+      <div className="flex py-8 gap-2 w-full">
         {Object.entries(feedbackTypes).map(([key, value]) => {
           return (
             <button
               key={key}
-              className="bg-zinc-800 rounded-lg py-5 w-24 flex flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
-              onClick={() => onFeedBackTypeChanged(key as FeedbackType)}
+              className="bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
+              onClick={() => onFeedbackTypeChanged(key as FeedbackTypes)}
               type="button"
             >
-              <img src={value.image.source} alt={value.image.alt} />
+              <img src={value.imagem.source} alt={value.imagem.alt} />
               <span>{value.title}</span>
             </button>
           );
         })}
       </div>
     </>
-  )
+  );
 }
